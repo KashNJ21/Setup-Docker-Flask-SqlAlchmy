@@ -2,6 +2,7 @@ import json
 
 from flask import request
 
+
 from . import create_app, database
 from .models import Cats
 
@@ -47,3 +48,4 @@ def edit(cat_id):
     new_price = data['price']
     database.edit_instance(Cats, id=cat_id, price=new_price)
     return json.dumps("Edited"), 200
+
