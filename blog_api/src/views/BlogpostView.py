@@ -23,6 +23,15 @@ def create():
     data = blogpost_schema.dump(post).data
     return custom_response(data, 201)
 
+def custom_response(res, status_code):
+  """
+  Custom Response Function
+  """
+  return Response(
+    mimetype="application/json",
+    response=json.dumps(res),
+    status=status_code
+  )
 
 @blogpost_api.route('/', methods=['GET'])
 def get_all():
