@@ -42,7 +42,6 @@ def get_all():
     data = blogpost_schema.dump(posts, many=True).data
     return custom_response(data, 200)
 
-
 @blogpost_api.route('/<int:blogpost_id>', methods=['GET'])
 def get_one(blogpost_id):
     """
@@ -53,7 +52,6 @@ def get_one(blogpost_id):
         return custom_response({'error': 'post not found'}, 404)
     data = blogpost_schema.dump(post).data
     return custom_response(data, 200)
-
 
 @blogpost_api.route('/<int:blogpost_id>', methods=['PUT'])
 @Auth.auth_required
@@ -78,6 +76,7 @@ def update(blogpost_id):
     return custom_response(data, 200)
 
 
+
 @blogpost_api.route('/<int:blogpost_id>', methods=['DELETE'])
 @Auth.auth_required
 def delete(blogpost_id):
@@ -93,7 +92,6 @@ def delete(blogpost_id):
 
     post.delete()
     return custom_response({'message': 'deleted'}, 204)
-
 
 def custom_response(res, status_code):
     """
